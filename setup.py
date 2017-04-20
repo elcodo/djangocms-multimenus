@@ -1,6 +1,6 @@
 # coding: utf-8
 from setuptools import setup, find_packages
-from usergroup_segment import __version__
+from multimenus import __version__
 
 
 REQUIREMENTS = [
