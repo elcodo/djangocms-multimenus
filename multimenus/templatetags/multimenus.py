@@ -9,19 +9,23 @@ register = template.Library()
 
 
 @register.tag
-class get_multi_menu(InclusionTag):
-    name = 'get_multi_menu'
+class ShowMultiMenu(InclusionTag):
+    name = 'show_multi_menu'
     push_context = True
     options = Options(
         Argument('name', required=True),
-        Argument('template', required=True),
+        Argument('template', required=False),
     )
 
     def get_template(self, context, **kwargs):
         return kwargs.get('template')
 
-    def get_context(self, context, name, template):
-        item = MenuItem.objects.get(title=name)
+    def get_context(self, context, name, template="multimenus/menu.html"):
+        try:
+            item = MenuItem.objects.get(title=name)
+        except MenuItem.DoesNotExist:
+            raise Exception("Menu item named '%s' not found." % name)
+
         lang = context['LANGUAGE_CODE']
         url = ''
         if item.url:
