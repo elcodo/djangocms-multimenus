@@ -5,6 +5,7 @@ from multimenus import __version__
 
 REQUIREMENTS = [
     'django-cms',
+    'django-treebeard',
     'django-parler',
     'aldryn-translation-tools',
 ]
