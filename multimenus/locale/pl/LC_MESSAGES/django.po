@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-04-20 18:57+0200\n"
+"POT-Creation-Date: 2017-04-21 11:10+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,42 +19,70 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
 
+#: admin.py:17
+msgid "Link"
+msgstr "Odnośnik"
+
+#: admin.py:18
+msgid "Tree position"
+msgstr "Położenie w drzewie"
+
+#: admin.py:27
+msgid "Position"
+msgstr "Pozycja"
+
+#: admin.py:28
+msgid "Relative to"
+msgstr "Względem"
+
+#: apps.py:7
+msgid "Multi menus"
+msgstr ""
+
 #: cms_toolbars.py:19
 msgid "Manage menus"
 msgstr "Zarządzaj menu"
 
 #: enums.py:5
 msgid "Open in new window"
-msgstr ""
+msgstr "Otwórz w nowym oknie"
 
 #: enums.py:6
 msgid "Open in same window"
-msgstr ""
+msgstr "Otwórz w tym samym oknie"
 
 #: enums.py:7
 msgid "Delegate to parent"
-msgstr ""
+msgstr "Deleguj do rodzica"
 
 #: enums.py:8
 msgid "Delegate to top"
-msgstr ""
+msgstr "Deleguj do okna (top)"
 
-#: models.py:12
+#: models.py:13
 msgid "Title"
 msgstr "Tytuł"
 
-#: models.py:14
+#: models.py:18
+msgid "Template tags refers to Menu ID."
+msgstr "Tagi szablonu odnoszą się do ID menu."
+
+#: models.py:19
+msgid "Menu ID"
+msgstr "ID Menu"
+
+#: models.py:21
 msgid "Page"
 msgstr "Strona"
 
-#: models.py:20
+#: models.py:27
 msgid "Target"
 msgstr "Cel"
 
-#: models.py:29
+#: models.py:34
 msgid "menu item"
 msgstr "element menu"
 
-#: models.py:30
+#: models.py:35
 msgid "menu items"
 msgstr "elementy menu"
