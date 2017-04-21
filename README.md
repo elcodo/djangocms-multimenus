@@ -35,8 +35,7 @@ First, create menu using panel in CMS main toolbar. See screenshots for details.
 ![django-multimenus2](https://cloud.githubusercontent.com/assets/186096/25271528/b590fa26-2684-11e7-9881-e902ecbaaa36.png)
 
 
-Template
-++++++++
+### Template
 
 Display menu with Menu ID: NAVBAR_TOP
 
@@ -48,8 +47,7 @@ Display menu with Menu ID: NAVBAR_TOP
 </ul>
 ```
 
-Templatetag parameters
-++++++++++++++++++++++
+### Templatetag parameters
 
 ```python
 {% show_multi_menu MENU_ID "template.html" include_self=True %}
