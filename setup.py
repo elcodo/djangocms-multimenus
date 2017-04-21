@@ -4,7 +4,9 @@ from multimenus import __version__
 
 
 REQUIREMENTS = [
-    'django-cms'
+    'django-cms',
+    'django-parler',
+    'aldryn-translation-tools',
 ]
 
 CLASSIFIERS = [

@@ -3,8 +3,17 @@ djangocms-multimenus
 
 This plugin requires:
 * django-cms: https://github.com/divio/django-cms
+* django-parler
+* aldryn-translation-tools
 
 Multiple named menus support for DjangoCMS
+
+Authors
+-------
+
+* Wojtek Kloc
+* Grzegorz Biały
+
 
 Installation
 ------------

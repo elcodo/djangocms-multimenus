@@ -24,6 +24,7 @@ class Migration(migrations.Migration):
                 ('depth', models.PositiveIntegerField()),
                 ('numchild', models.PositiveIntegerField(default=0)),
                 ('title', models.CharField(max_length=255, verbose_name='Tytuł')),
+                ('menu_id', models.CharField(max_length=255, verbose_name='Menu ID')),
                 ('url', models.URLField(null=True)),
                 ('target', models.CharField(blank=True, choices=[('_blank', 'Open in new window'), ('_self', 'Open in same window'), ('_parent', 'Delegate to parent'), ('_top', 'Delegate to top')], max_length=255, verbose_name='Target')),
                 ('page', cms.models.fields.PageField(null=True, on_delete=django.db.models.deletion.CASCADE, to='cms.Page', verbose_name='Strona')),
