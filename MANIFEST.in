@@ -1,0 +1,2 @@
+recursive-include multimenus/locale *
+recursive-include multimenus/templates *
