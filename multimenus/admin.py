@@ -1,10 +1,10 @@
 from django.contrib import admin
+from django.contrib.sites.shortcuts import get_current_site
 from django.utils.translation import ugettext, ugettext_lazy as _
 
 from aldryn_translation_tools.admin import AllTranslationsMixin
 from parler.admin import TranslatableAdmin
 from treebeard.admin import TreeAdmin
-from treebeard.forms import movenodeform_factory
 
 from .forms import MenuItemAdminForm
 from .models import MenuItem
@@ -27,3 +27,12 @@ class MenuItemAdmin(AllTranslationsMixin, TranslatableAdmin, TreeAdmin):
         form_cls.base_fields['_position'].label = ugettext('Position')
         form_cls.base_fields['_ref_node_id'].label = ugettext('Relative to')
         return form_cls
+
+    def get_queryset(self, request):
+        current_site = get_current_site(request)
+        return super().get_queryset(request).filter(site=current_site)
+
+    def save_model(self, request, obj, form, change):
+        current_site = get_current_site(request)
+        obj.site = current_site
+        return super().save_model(request, obj, form, change)

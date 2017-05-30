@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.sites.models import Site
 from django.utils.translation import ugettext_lazy as _
 
 from cms.models.fields import PageField
@@ -12,6 +13,7 @@ class MenuItem(TranslatableModel, MP_Node):
     translations = TranslatedFields(
         title=models.CharField(verbose_name=_('Title'), max_length=255)
     )
+    site = models.ForeignKey(Site, on_delete=models.CASCADE)
     menu_id = models.CharField(
         blank=True,
         max_length=255,
@@ -31,6 +33,7 @@ class MenuItem(TranslatableModel, MP_Node):
     )
 
     class Meta:
+        ordering = ('path', )
         verbose_name = _('menu item')
         verbose_name_plural = _('menu items')
 
@@ -43,3 +46,8 @@ class MenuItem(TranslatableModel, MP_Node):
         if self.url:
             return self.url
         return "#"
+
+    def save(self, *args, **kwargs):
+        current_site = Site.objects.get_current()
+        self.site = current_site
+        return super().save(*args, **kwargs)
