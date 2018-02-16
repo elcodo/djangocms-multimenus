@@ -39,7 +39,7 @@ First, create menu using panel in CMS main toolbar. See screenshots for details.
 
 Display menu with Menu ID: NAVBAR_TOP
 
-```html
+```html+django
 {% load multimenus %}
 
 <ul>
@@ -49,13 +49,13 @@ Display menu with Menu ID: NAVBAR_TOP
 
 ### Templatetag parameters
 
-```python
+```html+django
 {% show_multi_menu MENU_ID "template.html" include_self=True %}
 ```
 
 * you can override menu template using path as second parameter. Basic template code:
 
-```html
+```html+django
 {% load multimenus %}
 
 {% for item in items %}
