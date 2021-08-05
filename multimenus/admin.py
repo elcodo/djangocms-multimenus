@@ -9,6 +9,7 @@ from treebeard.admin import TreeAdmin
 
 from .forms import MenuItemAdminForm
 from .models import MenuItem
+from .utils import caclculate_cache_key
 
 
 @admin.register(MenuItem)
@@ -52,5 +53,5 @@ class MenuItemAdmin(AllTranslationsMixin, TranslatableAdmin, TreeAdmin):
     def clear_cache(self, obj, request):
         current_site = get_current_site(request)
         menu_id = obj.get_parents_menu_id()
-        cache_key = 'multimenus-{}-{}-{}'.format(menu_id, current_site.pk, get_language())
+        cache_key = caclculate_cache_key(menu_id, current_site.pk)
         cache.delete(cache_key)
