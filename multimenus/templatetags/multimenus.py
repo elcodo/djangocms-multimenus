@@ -42,7 +42,41 @@ class ShowMultiMenu(InclusionTag):
             except MenuItem.DoesNotExist:
                 menu_items = []
             cache.set(cache_key, menu_items, 60 * 60 * 24)
+
+        activated_menu_items = []
+        for item in menu_items:
+            activated_menu_items.append(ActivatedMenuItem(context['request'], item))
+
         return {
-            'items': menu_items,
+            'items': activated_menu_items,
             'template': template or ShowMultiMenu.DEFAULT_TEMPLATE_NAME,
         }
+
+class ActivatedMenuItem:
+    def __init__(self, request, menu_item):
+        self._request = request
+        self.menu_item = menu_item
+        self.title = menu_item.title
+        self.target = menu_item.target
+        children = menu_item.get_children();
+        activated_children = []
+        for child in children:
+            activated_children.append(ActivatedMenuItem(request, child))
+        self.children = activated_children
+
+    def get_children(self):
+        return self.children
+
+    def get_url(self):
+        return self.menu_item.get_url()
+
+    def is_active(self):
+        return self.menu_item.get_url() == self._request.get_full_path()
+
+    def is_has_active_children(self):
+        childrens = self.get_children()
+        for children in childrens:
+            if children.is_active():
+                return True
+        return False
+
