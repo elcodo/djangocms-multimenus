@@ -6,7 +6,7 @@ from django.contrib.sites.shortcuts import get_current_site
 from django.core.cache import cache
 
 from multimenus.models import MenuItem
-from multimenus.utils import caclculate_cache_key
+from multimenus.utils import calculate_cache_key
 
 register = template.Library()
 
@@ -30,7 +30,7 @@ class ShowMultiMenu(InclusionTag):
 
     def get_context(self, context, menu_id, template=None, params={}):
         current_site = get_current_site(context['request'])
-        cache_key = caclculate_cache_key(menu_id, current_site.pk)
+        cache_key = calculate_cache_key(menu_id, current_site.pk)
         menu_items = cache.get(cache_key)
         if menu_items is None:
             try:
