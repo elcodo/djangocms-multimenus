@@ -4,9 +4,9 @@ from classytags.helpers import InclusionTag
 from django import template
 from django.contrib.sites.shortcuts import get_current_site
 from django.core.cache import cache
-from django.utils.translation import get_language
 
 from multimenus.models import MenuItem
+from multimenus.utils import calculate_cache_key
 
 register = template.Library()
 
@@ -30,7 +30,7 @@ class ShowMultiMenu(InclusionTag):
 
     def get_context(self, context, menu_id, template=None, params={}):
         current_site = get_current_site(context['request'])
-        cache_key = 'multimenus-{}-{}-{}'.format(menu_id, current_site.pk, get_language())
+        cache_key = calculate_cache_key(menu_id, current_site.pk)
         menu_items = cache.get(cache_key)
         if menu_items is None:
             try:
@@ -42,7 +42,9 @@ class ShowMultiMenu(InclusionTag):
             except MenuItem.DoesNotExist:
                 menu_items = []
             cache.set(cache_key, menu_items, 60 * 60 * 24)
+
         return {
             'items': menu_items,
             'template': template or ShowMultiMenu.DEFAULT_TEMPLATE_NAME,
         }
+

@@ -40,6 +40,13 @@ class MenuItem(TranslatableModel, MP_Node):
     def __str__(self):
         return self.title
 
+    def get_parents_menu_id(self):
+        parent = self
+        while parent:
+            if parent.menu_id:
+                return parent.menu_id
+            parent = parent.get_parent()
+
     def get_url(self):
         if self.page:
             return self.page.get_absolute_url()
