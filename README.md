@@ -59,7 +59,7 @@ Display menu with Menu ID: NAVBAR_TOP
 {% load multimenus %}
 
 {% for item in items %}
-<li>
+<li{% if item.is_active or item.is_has_active_children %} class="active"{% endif %}>
     <a href="{{ item.get_url }}"{% if item.target %} target="{{ item.target }}"{% endif %}>{{ item.title }}</a>
     {% if item.get_children %}
     <ul>
