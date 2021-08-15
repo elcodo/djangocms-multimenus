@@ -21,7 +21,7 @@ https://github.com/aldryn/aldryn-categories/
 Installation
 ------------
 
-1. Add `'multimenus'` to INSTALLED_APPS in your Django project's
+1. Add `'multimenus'` and `'aldryn_translation_tools'` to INSTALLED_APPS in your Django project's
    settings file.
 2. `python manage.py migrate multimenus`.
 
